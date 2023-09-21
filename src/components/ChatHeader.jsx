@@ -1,7 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import {FiLogOut} from 'react-icons/fi'
+import {useNavigate} from 'react-router-dom';
+
 export default function ChatHeader(props) {
+  const navigate=useNavigate();
+
+  const handleClick=()=>{
+
+    localStorage.removeItem("chat-app-user");
+    navigate('/login');
+  }
   return (
     <Container>
 
@@ -17,7 +26,7 @@ export default function ChatHeader(props) {
         </div>
       </div>
 
-<div className="logout">
+<div className="logout" onClick={handleClick}>
       <FiLogOut size={'1.5rem'}/>
       </div>
     </Container>
